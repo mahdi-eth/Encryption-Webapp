@@ -1,14 +1,14 @@
 import { useState } from "react";
 import "./index.css";
-import { Encryption } from "./components";
+import { Encryption, Footer } from "./components";
 
 function App() {
     const [encryptionActive, encryptionActivator] = useState(true);
 
     const encryptionActiveClasses =
-        "transition focus-visible:ring focus:ring-blue-200 focus:outline-none ease-in-out duration-150 w-32 tracking-wide font-bold rounded border-b-2  hover:text-white shadow-md py-2 px-6 inline-flex items-center border-blue-500 ";
+        "transition focus-visible:ring focus:ring-blue-200 focus:outline-none ease-in-out duration-150 w-32 tracking-wide font-bold rounded border-b-2 hover:text-white shadow-md py-2 px-6 inline-flex items-center text-center border-blue-600 ";
     const decryptionClasses =
-        "transition focus-visible:ring focus:ring-red-200 focus:outline-none ease-in-out duration-150 w-32 tracking-wide font-bold rounded border-b-2 border-red-500 hover:border-red-600 hover:bg-red-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center";
+        "transition focus-visible:ring focus:ring-red-200 focus:outline-none ease-in-out duration-150 w-32 tracking-wide font-bold rounded border-b-2 hover:text-white shadow-md py-2 px-6 inline-flex items-center text-center";
 
     return (
         <>
@@ -22,9 +22,9 @@ function App() {
                         <button
                             className={
                                 encryptionActive
-                                    ? "bg-blue-500 text-white hover:bg-blue-400 hover:border-blue-400 " +
+                                    ? "bg-blue-600 text-white hover:bg-blue-500 hover:border-blue-500 " +
                                       encryptionActiveClasses
-                                    : "bg-white text-gray-800 hover:bg-blue-500 hover:border-blue-600 " +
+                                    : "bg-white text-gray-800 hover:bg-blue-600 hover:border-blue-600 " +
                                       encryptionActiveClasses
                             }>
                             <span className="mx-auto">Encryption</span>
@@ -39,9 +39,9 @@ function App() {
                         <button
                             className={
                                 !encryptionActive
-                                    ? "bg-red-500 text-white hover:bg-red-400 hover:border-red-400 " +
+                                    ? "bg-red-600 border-red-600 text-white hover:bg-red-500 hover:border-red-500 " +
                                       decryptionClasses
-                                    : "bg-white text-gray-800 hover:bg-red-500 hover:border-red-600 " +
+                                    : "bg-white text-gray-800 border-red-600 hover:bg-red-600 hover:border-red-600 " +
                                       decryptionClasses
                             }>
                             <span className="mx-auto">Decryption</span>
@@ -50,6 +50,7 @@ function App() {
                 </div>
             </div>
             <Encryption condition={encryptionActive}/>
+            <Footer condition={encryptionActive}/>
         </>
     );
 }
