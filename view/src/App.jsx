@@ -6,9 +6,9 @@ function App() {
     const [encryptionActive, encryptionActivator] = useState(true);
 
     const encryptionActiveClasses =
-        "transition focus-visible:ring focus:ring-blue-200 focus:outline-none ease-in-out duration-150 w-32 tracking-wide font-bold rounded border-b-2 hover:text-white shadow-md py-2 px-6 inline-flex items-center text-center border-blue-600 ";
+        "transition focus-visible:ring focus:ring-blue-200 focus:outline-none ease-in-out duration-200 w-32 tracking-wide font-bold rounded border-b-2 hover:text-white shadow-md py-2 px-6 inline-flex items-center text-center border-blue-600 ";
     const decryptionClasses =
-        "transition focus-visible:ring focus:ring-red-200 focus:outline-none ease-in-out duration-150 w-32 tracking-wide font-bold rounded border-b-2 hover:text-white shadow-md py-2 px-6 inline-flex items-center text-center";
+        "transition focus-visible:ring focus:ring-red-200 focus:outline-none ease-in-out duration-200 w-32 tracking-wide font-bold rounded border-b-2 hover:text-white shadow-md py-2 px-6 inline-flex items-center text-center";
 
     return (
         <>

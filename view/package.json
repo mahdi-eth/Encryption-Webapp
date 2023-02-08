@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.10",
+    "@iconscout/react-unicons": "^1.1.6",
     "axios": "^1.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
