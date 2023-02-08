@@ -3,7 +3,7 @@ import { UilGithub } from "@iconscout/react-unicons";
 
 export function Footer({ condition }) {
     const footerClasses =
-        "mt-16 p-2 text-center shadow dark:bg-gray-800 transition duration-200";
+        "p-2 text-center shadow dark:bg-gray-800 transition duration-200";
 
     return (
         <>

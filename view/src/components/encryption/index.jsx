@@ -63,7 +63,8 @@ export function Encryption({ condition }) {
                     </button>
                 </form>
             </div>
-            <div className="flex justify-center w-full">
+            {/* After backend */}
+            <div className="justify-center w-full hidden">
                 <div className="flex flex-col mt-10 mx-4 sm:mx-8 lg:mx-16 p-4 border shadow-sm rounded-lg w-full bg-gray-50">
                     <button
                         type="button"
@@ -82,6 +83,7 @@ export function Encryption({ condition }) {
                     </p>
                 </div>
             </div>
+            {/* After backend */}
         </section>
     );
 }
