@@ -14,7 +14,7 @@ export function Encryption({ condition }) {
     const keyInputClasses =
         "w-36 rounded-lg shadow-sm bg-gray-50 focus-visible:ring transition duration-75 focus:outline-none border border-gray-300 text-gray-900 text-sm block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white";
     const textInputClasses =
-        "w-full bg-gray-50 shadow-sm rounded-lg focus-visible:ring transition duration-75 focus:outline-none p-2.5 text-sm text-gray-900 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white";
+        "w-full min-h-275 bg-gray-50 shadow-sm rounded-lg focus-visible:ring transition duration-75 focus:outline-none p-2.5 text-sm text-gray-900 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white";
     const transformBtnClasses =
         "text-white w-full font-bold rounded-lg transition duration-200 focus:ring-4 text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none";
     const copyBtnClasses =
@@ -43,7 +43,7 @@ export function Encryption({ condition }) {
                             rows="4"
                             className={
                                 condition
-                                    ? "focus:ring-blue-400 min-h-275 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 " +
+                                    ? "focus:ring-blue-400 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 " +
                                       textInputClasses
                                     : "focus:ring-red-400 focus:border-red-500 dark:focus:ring-red-500 dark:focus:border-red-500 " +
                                       textInputClasses
