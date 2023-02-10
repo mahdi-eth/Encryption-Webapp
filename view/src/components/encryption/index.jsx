@@ -4,13 +4,22 @@ import * as yup from "yup";
 import { UilCopy } from "@iconscout/react-unicons";
 import { useForm } from "react-hook-form";
 
+const schema = yup
+    .object({
+        key: yup.number().required(),
+        text: yup.string().required("Text is required!")
+    })
+    .required();
+
 export function Encryption({ condition }) {
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors }
-    } = useForm();
+    } = useForm({
+        resolver: yupResolver(schema)
+    });
     const onSubmit = (data) => console.log(data);
 
     const keyInputClasses =
@@ -22,15 +31,27 @@ export function Encryption({ condition }) {
     const copyBtnClasses =
         "py-2.5 self-end px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700";
 
+    console.log(errors?.key);
+
     return (
         <section className="w-auto grid mt-16 divide-y-2">
             <div>
                 <form
+                    noValidate
                     onSubmit={handleSubmit(onSubmit)}
                     className="flex flex-col gap-6 justify-center mt-10 mb-10 px-4 sm:px-8 lg:px-16 w-full">
                     <div>
+                        <p className="mb-2 text-sm text-red-600 dark:text-red-500">
+                            {errors?.key?.message ? (
+                                <span className="font-medium">Oops! </span>
+                            ) : null}{" "}
+                            {errors?.key?.message ==
+                            'key must be a `number` type, but the final value was: `NaN` (cast from the value `""`).'
+                                ? "Key is required & must be a number!"
+                                : null}
+                        </p>
                         <input
-                            type="text"
+                            type="number"
                             {...register("key")}
                             className={
                                 condition
@@ -44,6 +65,12 @@ export function Encryption({ condition }) {
                         />
                     </div>
                     <div>
+                        <p className="mb-2 text-sm text-red-600 dark:text-red-500">
+                            {errors?.text?.message ? (
+                                <span className="font-medium">Oops! </span>
+                            ) : null}{" "}
+                            {errors?.text?.message}
+                        </p>
                         <textarea
                             rows="4"
                             {...register("text")}
