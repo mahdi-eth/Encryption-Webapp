@@ -1,6 +1,8 @@
 import React from "react";
-import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 import { UilCopy } from "@iconscout/react-unicons";
+import { useForm } from "react-hook-form";
 
 export function Encryption({ condition }) {
     const {
@@ -23,10 +25,13 @@ export function Encryption({ condition }) {
     return (
         <section className="w-auto grid mt-16 divide-y-2">
             <div>
-                <form className="flex flex-col gap-6 justify-center mt-10 mb-10 px-4 sm:px-8 lg:px-16 w-full">
+                <form
+                    onSubmit={handleSubmit(onSubmit)}
+                    className="flex flex-col gap-6 justify-center mt-10 mb-10 px-4 sm:px-8 lg:px-16 w-full">
                     <div>
                         <input
                             type="text"
+                            {...register("key")}
                             className={
                                 condition
                                     ? "focus:ring-blue-400 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 " +
@@ -41,6 +46,7 @@ export function Encryption({ condition }) {
                     <div>
                         <textarea
                             rows="4"
+                            {...register("text")}
                             className={
                                 condition
                                     ? "focus:ring-blue-400 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 " +
@@ -48,7 +54,11 @@ export function Encryption({ condition }) {
                                     : "focus:ring-red-400 focus:border-red-500 dark:focus:ring-red-500 dark:focus:border-red-500 " +
                                       textInputClasses
                             }
-                            placeholder={ condition ? "Write your plain text here..." : "Write your encrypted text here..." }></textarea>
+                            placeholder={
+                                condition
+                                    ? "Write your plain text here..."
+                                    : "Write your encrypted text here..."
+                            }></textarea>
                     </div>
                     <button
                         type="submit"
