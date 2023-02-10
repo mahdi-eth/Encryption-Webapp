@@ -10,7 +10,6 @@ server.use(cors());
 server.use(express.json({ extended: false }));
 
 // hanlding
-
 server.use("/api", require("./routes").encryptRoute);
 server.use("/api", require("./routes").decryptRoute);
 
