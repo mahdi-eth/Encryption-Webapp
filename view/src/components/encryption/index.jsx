@@ -43,7 +43,7 @@ export function Encryption({ condition }) {
                             rows="4"
                             className={
                                 condition
-                                    ? "focus:ring-blue-400 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 " +
+                                    ? "focus:ring-blue-400 min-h-275 focus:border-blue-500 dark:focus:ring-blue-500 dark:focus:border-blue-500 " +
                                       textInputClasses
                                     : "focus:ring-red-400 focus:border-red-500 dark:focus:ring-red-500 dark:focus:border-red-500 " +
                                       textInputClasses
