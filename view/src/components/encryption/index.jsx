@@ -3,6 +3,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { UilCopy } from "@iconscout/react-unicons";
 import { useForm } from "react-hook-form";
+import { encryptionService, decryptionService } from "../../api";
 
 const schema = yup
     .object({
@@ -20,7 +21,13 @@ export function Encryption({ condition }) {
     } = useForm({
         resolver: yupResolver(schema)
     });
-    const onSubmit = (data) => console.log(data);
+    const onSubmit = (data) => {
+        if (condition) {
+            encryptionService(data)
+        } else {
+            decryptionService(data)
+        }
+    };
 
     const keyInputClasses =
         "w-36 rounded-lg shadow-sm bg-gray-50 focus-visible:ring transition duration-75 focus:outline-none border border-gray-300 text-gray-900 text-sm block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white";
@@ -30,8 +37,6 @@ export function Encryption({ condition }) {
         "text-white w-full font-bold rounded-lg transition duration-200 focus:ring-4 text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none";
     const copyBtnClasses =
         "py-2.5 self-end px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700";
-
-    console.log(errors?.key);
 
     return (
         <section className="w-auto grid mt-16 divide-y-2">
