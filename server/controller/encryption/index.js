@@ -5,18 +5,24 @@ const controlEncryption = (req, res) => {
     if (!key) return res.status(400).json({ message: "Key is requierd" });
     if (!text) return res.status(400).json({ message: "Text is requierd" });
 
-    let charCodeArr = [];
-    for (let i = 0; i < text.length; i++) {
-        let code = text.charCodeAt(i) + key;
-        charCodeArr.push(code);
-    }
+    const encrypt = (key, plainText) => {
+        let encryptedText = "";
+      
+        for (let i = 0; i < plainText.length; i++) {
+          let charCode = plainText.charCodeAt(i);
+          if (plainText[i] === " ") {
+            encryptedText += " ";
+          } else {
+            encryptedText += String.fromCharCode((charCode + key) % 128);
+          }
+        }
+      
+        return encryptedText;
+      }
+      
+      const output = encrypt(key, text)
 
-    let outPutText = "";
-    charCodeArr.forEach((number) => {
-        outPutText += String.fromCharCode(number);
-    });
-
-    return res.status(200).json({ output: outPutText });
+    return res.status(200).json({ output });
 };
 
 module.exports = { controlEncryption };

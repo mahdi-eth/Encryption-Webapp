@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { UilCopy } from "@iconscout/react-unicons";
 import { useForm } from "react-hook-form";
 import { encryptionService, decryptionService } from "../../api";
+import { CopyButton } from "../copybtn";
 
 const schema = yup
     .object({
         key: yup.number().required(),
-        text: yup.string().required("Text is required!")
+        text: yup.string().trim().required("Text is required!")
     })
     .required();
 
 export function Encryption({ condition }) {
+    const [output, setOutput] = useState("");
+
     const {
         register,
         handleSubmit,
@@ -21,11 +23,13 @@ export function Encryption({ condition }) {
     } = useForm({
         resolver: yupResolver(schema)
     });
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         if (condition) {
-            encryptionService(data)
+            const res = await encryptionService(data);
+            setOutput(res?.data?.output);
         } else {
-            decryptionService(data)
+            const res = await decryptionService(data);
+            setOutput(res?.data?.output);
         }
     };
 
@@ -36,7 +40,7 @@ export function Encryption({ condition }) {
     const transformBtnClasses =
         "text-white w-full font-bold rounded-lg transition duration-200 focus:ring-4 text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none";
     const copyBtnClasses =
-        "py-2.5 self-end px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700";
+        "self-end text-sm font-light text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700";
 
     return (
         <section className="w-auto grid mt-16 divide-y-2">
@@ -105,27 +109,14 @@ export function Encryption({ condition }) {
                     </button>
                 </form>
             </div>
-            {/* After backend */}
-            <div className="justify-center w-full hidden">
-                <div className="flex flex-col mt-10 mx-4 sm:mx-8 lg:mx-16 p-4 border shadow-sm rounded-lg w-full bg-gray-50">
-                    <button
-                        type="button"
-                        title="Copy"
-                        className={
-                            condition
-                                ? "hover:text-blue-500 " + copyBtnClasses
-                                : "hover:text-red-500 " + copyBtnClasses
-                        }>
-                        <UilCopy />
-                    </button>
-                    <p className="text-gray-500">
-                        {condition
-                            ? "Encrypted text will shown here..."
-                            : "Decrypted text will shown here..."}
-                    </p>
+            {output && (
+                <div className="flex flex-col gap-6 justify-center mt-10 mb-10 px-4 sm:px-8 lg:px-16 w-full">
+                    <div className="flex flex-col p-4 border shadow-sm rounded-lg mt-10 bg-gray-50">
+                        <CopyButton textToCopy={output} />
+                        <p className="text-gray-800">{output}</p>
+                    </div>
                 </div>
-            </div>
-            {/* After backend */}
+            )}
         </section>
     );
 }

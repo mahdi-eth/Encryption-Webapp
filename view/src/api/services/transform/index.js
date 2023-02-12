@@ -1,9 +1,9 @@
 import { BASE_INSTANCE } from "../../constants";
 
 export const encryptionService = (data) => {
-    BASE_INSTANCE.post("/encrypt", data);
+    return BASE_INSTANCE.post("/encrypt", data);
 };
 
 export const decryptionService = (data) => {
-    BASE_INSTANCE.post("/decrypt", data);
+    return BASE_INSTANCE.post("/decrypt", data);
 };
