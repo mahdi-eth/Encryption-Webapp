@@ -7,7 +7,7 @@ import { CopyButton } from "../copybtn";
 
 const schema = yup
     .object({
-        key: yup.number().required(),
+        key: yup.number().notOneOf([0]).required(),
         text: yup.string().trim().required("Text is required!")
     })
     .required();
@@ -33,14 +33,14 @@ export function Encryption({ condition }) {
         }
     };
 
+    console.log(errors?.key);
+
     const keyInputClasses =
         "w-36 rounded-lg shadow-sm bg-gray-50 focus-visible:ring transition duration-75 focus:outline-none border border-gray-300 text-gray-900 text-sm block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white";
     const textInputClasses =
         "w-full min-h-275 bg-gray-50 shadow-sm rounded-lg focus-visible:ring transition duration-75 focus:outline-none p-2.5 text-sm text-gray-900 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white";
     const transformBtnClasses =
         "text-white w-full font-bold rounded-lg transition duration-200 focus:ring-4 text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none";
-    const copyBtnClasses =
-        "self-end text-sm font-light text-gray-900 focus:outline-none bg-white rounded-lg hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700";
 
     return (
         <section className="w-auto grid mt-16 divide-y-2">
@@ -54,9 +54,15 @@ export function Encryption({ condition }) {
                             {errors?.key?.message ? (
                                 <span className="font-medium">Oops! </span>
                             ) : null}{" "}
-                            {errors?.key?.message ==
-                            'key must be a `number` type, but the final value was: `NaN` (cast from the value `""`).'
+                            {errors?.key?.message &&
+                            errors?.key?.message ==
+                                'key must be a `number` type, but the final value was: `NaN` (cast from the value `""`).'
                                 ? "Key is required & must be a number!"
+                                : null}
+                            {errors?.key?.message &&
+                            errors?.key?.message ==
+                                'key must not be one of the following values: 0'
+                                ? "The key number cannot be zero."
                                 : null}
                         </p>
                         <input
