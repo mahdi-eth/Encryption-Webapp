@@ -6,19 +6,19 @@ const controlEncryption = (req, res) => {
     if (!text) return res.status(400).json({ message: "Text is requierd" });
 
     const encrypt = (key, plainText) => {
-        let encryptedText = "";
-      
-        for (let i = 0; i < plainText.length; i++) {
-          let charCode = plainText.charCodeAt(i);
-          if (plainText[i] === " ") {
-            encryptedText += " ";
-          } else {
-            encryptedText += String.fromCharCode((charCode + key) % 128);
-          }
+      let encryptedText = "";
+    
+      for (let i = 0; i < plainText.length; i++) {
+        let charCode = plainText.charCodeAt(i);
+        if (plainText[i] === " ") {
+          encryptedText += " ";
+        } else {
+          encryptedText += String.fromCharCode(((charCode - 32 + key) % 96) + 32);
         }
-      
-        return encryptedText;
       }
+    
+      return encryptedText;
+    }    
       
       const output = encrypt(key, text)
 
