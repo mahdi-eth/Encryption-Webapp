@@ -8,7 +8,6 @@ const controlDecryption = (req, res) => {
     const decryptionService = (key, encryptedText) => {
         let decryptedText = "";
         const modKey = key % 128;
-        
         for (let i = 0; i < encryptedText.length; i++) {
           if (encryptedText[i] === " ") {
             decryptedText += " ";
@@ -20,9 +19,8 @@ const controlDecryption = (req, res) => {
             decryptedText += String.fromCharCode(newCharCode);
           }
         }
-        
         return decryptedText;
-      }
+      };
       
 
     const output = decryptionService(key, text);
