@@ -1,5 +1,6 @@
 ## Encryption App
 A web application for encrypting and decrypting text using a user-provided key.
+This is a web app built as the final project for Harvard's CS50x course. The app allows users to encrypt and decrypt messages with any numerical key. The encryption algorithm uses the ASCII table to shift the character codes, and the decryption algorithm reverses the process. Check out the demo [here](https://youtu.be/S8nyX5MDoDk).
 
 ## Technologies Used
 Frontend: React, Tailwind
