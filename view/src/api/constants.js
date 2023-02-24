@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const BASE_INSTANCE = axios.create({
-    baseURL: "http://localhost:3000/api",
+    baseURL: "https://encryptor-api.onrender.com/api",
     timeout: 25000
 });
