@@ -30,5 +30,7 @@ These instructions will get you a copy of the project up and running on your loc
 ## Note
 This app is a simple demonstration of encryption and decryption using a user-provided key. It is not meant to be used for secure data encryption.
 
+`The host of this project supports only the view(frontend) of the project. The backend will be on the host as soon as possible.`
+
 ## Author
 Mahdi Ettehadnejad
