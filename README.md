@@ -2,6 +2,10 @@
 A web application for encrypting and decrypting text using a user-provided key.
 This is a web app built as the final project for Harvard's CS50x course. The app allows users to encrypt and decrypt messages with any numerical key. The encryption algorithm uses the ASCII table to shift the character codes, and the decryption algorithm reverses the process. Check out the demo [here](https://youtu.be/S8nyX5MDoDk).
 
+## Live Version
+You can access the live version of the Encryptor web application [here](https://encryptor-webapp.netlify.app/).
+
+
 ## Technologies Used
 - Frontend: React, Tailwind
 - Backend: Express.js
@@ -29,8 +33,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Note
 This app is a simple demonstration of encryption and decryption using a user-provided key. It is not meant to be used for secure data encryption.
-
-`The host of this project supports only the view(frontend) of the project. The backend will be on the host as soon as possible.`
 
 ## Author
 Mahdi Ettehadnejad
