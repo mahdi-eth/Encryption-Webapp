@@ -12,5 +12,8 @@ server.use(express.json({ extended: false }));
 // hanlding
 server.use("/api", require("./routes").encryptRoute);
 server.use("/api", require("./routes").decryptRoute);
+server.get("/", (req, res) => {
+  res.json({ test: "test" })
+}); 
 
 server.listen(port, () => console.log(`Server is running on port ${port}`));
