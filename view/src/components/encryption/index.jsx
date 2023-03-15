@@ -34,9 +34,9 @@ export function Encryption({ condition }) {
     };
 
     const keyInputClasses =
-        "w-36 rounded-lg shadow-sm bg-gray-50 focus-visible:ring transition duration-75 focus:outline-none border border-gray-300 text-gray-900 text-sm block p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white";
+        "w-36 rounded-lg shadow-sm bg-gray-50 focus-visible:ring transition duration-75 focus:outline-none border border-gray-300 text-gray-900 text-sm block p-2.5";
     const textInputClasses =
-        "w-full bg-gray-50 shadow-sm rounded-lg focus-visible:ring transition duration-75 focus:outline-none p-2.5 text-sm text-gray-900 border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white";
+        "w-full min-h-275 bg-gray-50 shadow-sm rounded-lg focus-visible:ring transition duration-75 focus:outline-none p-2.5 text-sm text-gray-900 border border-gray-300";
     const transformBtnClasses =
         "text-white w-full font-bold rounded-lg transition duration-200 focus:ring-4 text-sm px-5 py-2.5 mr-2 mb-2 focus:outline-none";
 
@@ -78,7 +78,7 @@ export function Encryption({ condition }) {
                         />
                     </div>
                     <div>
-                        <p className="mb-2 text-sm text-red-600 dark:text-red-500">
+                        <p className="mb-2 text-sm text-red-600">
                             {errors?.text?.message ? (
                                 <span className="font-medium">Oops! </span>
                             ) : null}{" "}
