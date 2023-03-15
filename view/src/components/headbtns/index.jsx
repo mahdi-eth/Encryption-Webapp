@@ -33,7 +33,7 @@ export function HeadBtns({ condition, encryptionActivator }) {
                     }}>
                     <button
                         className={
-                            !condition 
+                            !condition
                                 ? "bg-red-600 border-red-600 text-white hover:bg-red-500 hover:border-red-500 " +
                                   decryptionClasses
                                 : "bg-white text-gray-800 border-red-600 hover:bg-red-600 hover:border-red-600 " +
